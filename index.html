@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyLink - Premium URL Shortener</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            background: #000000;
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .aura-light {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.6;
+            animation: auraFloat 15s ease-in-out infinite;
+        }
+
+        .aura-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.6), transparent);
+            top: -200px;
+            right: -200px;
+            animation-delay: 0s;
+        }
+
+        .aura-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.5), transparent);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: 5s;
+        }
+
+        .aura-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.4), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes auraFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translate(100px, -100px) scale(1.2);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(-50px, 100px) scale(0.9);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translate(150px, 50px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .input-glass {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .neon-text {
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.8),
+                         0 0 20px rgba(102, 126, 234, 0.6),
+                         0 0 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .logo-link {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.75rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.6));
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(138, 43, 226, 0.9));
+            }
+        }
+
+        /* .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(180deg, #ffffff 0%, #e0e7ff 40%, #c7d2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.4));
+        } */
+         .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
+                 0 0 40px rgba(138, 43, 226, 0.4),
+                 0 0 60px rgba(138, 43, 226, 0.3);
+    animation: heroGlow 3s ease-in-out infinite;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+[data-theme="light"] .hero-title {
+    color: #7c3aed;
+    text-shadow: 0 0 15px rgba(124, 58, 237, 0.4),
+                 0 0 30px rgba(124, 58, 237, 0.3),
+                 0 0 45px rgba(124, 58, 237, 0.2);
+}
+
+@keyframes heroGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
+                     0 0 40px rgba(138, 43, 226, 0.4),
+                     0 0 60px rgba(138, 43, 226, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(138, 43, 226, 0.8),
+                     0 0 60px rgba(138, 43, 226, 0.6),
+                     0 0 90px rgba(138, 43, 226, 0.4);
+    }
+}
+
+[data-theme="light"] .hero-title {
+    animation: heroGlowLight 3s ease-in-out infinite;
+}
+
+@keyframes heroGlowLight {
+    0%, 100% {
+        text-shadow: 0 0 15px rgba(124, 58, 237, 0.4),
+                     0 0 30px rgba(124, 58, 237, 0.3),
+                     0 0 45px rgba(124, 58, 237, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(124, 58, 237, 0.6),
+                     0 0 50px rgba(124, 58, 237, 0.5),
+                     0 0 75px rgba(124, 58, 237, 0.3);
+    }
+}
+
+        .hero-subtitle {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 50%, #f0abfc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.7;
+            animation: cardAura 3s ease-in-out infinite;
+        }
+
+        .feature-card:nth-child(1)::before {
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.8), transparent);
+            top: -50px;
+            left: -50px;
+        }
+
+        .feature-card:nth-child(2)::before {
+            background: radial-gradient(circle, rgba(0, 191, 255, 0.8), transparent);
+            top: -50px;
+            right: -50px;
+        }
+
+        .feature-card:nth-child(3)::before {
+            background: radial-gradient(circle, rgba(255, 0, 255, 0.8), transparent);
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes cardAura {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(20px, -20px) scale(1.2);
+            }
+        }
+
+        .feature-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: footerGlow 3s ease-in-out infinite;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes footerGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+                opacity: 0.9;
+            }
+            50% {
+                filter: drop-shadow(0 0 16px rgba(118, 75, 162, 0.8));
+                opacity: 1;
+            }
+        }
+
+        .footer-divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+            margin: 0 auto 1.5rem auto;
+            animation: dividerPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dividerPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scaleX(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleX(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .aura-light {
+                width: 300px !important;
+                height: 300px !important;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+        }
+        @import "https://unpkg.com/open-props/easings.min.css";
+
+:root {
+    --bg-primary: #000000;
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    --bg-glass-strong: rgba(255, 255, 255, 0.08);
+    --bg-input: rgba(255, 255, 255, 0.06);
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --icon-fill: #a78bfa;
+    --icon-fill-hover: #c4b5fd;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f8f9fa;
+    --bg-glass: rgba(255, 255, 255, 0.9);
+    --bg-glass-strong: rgba(255, 255, 255, 0.95);
+    --bg-input: rgba(255, 255, 255, 0.8);
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-tertiary: #6b7280;
+    --border-glass: rgba(0, 0, 0, 0.1);
+    --icon-fill: #7c3aed;
+    --icon-fill-hover: #6d28d9;
+}
+
+/* Update existing classes to use CSS variables */
+.gradient-bg {
+    background: var(--bg-primary);
+    transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .aura-light {
+    opacity: 0.3;
+}
+
+.glass {
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .glass {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-strong {
+    background: var(--bg-glass-strong);
+    border: 1px solid var(--border-glass);
+}
+
+[data-theme="light"] .btn-secondary {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.input-glass {
+    background: var(--bg-input);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+}
+
+.input-glass::placeholder {
+    color: var(--text-tertiary);
+}
+
+.text-muted {
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+}
+
+[data-theme="light"] .text-muted {
+    color: #7c3aed;
+}
+
+.label-text {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.result-label {
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+}
+
+.short-url-display {
+    background: rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+}
+
+[data-theme="light"] .short-url-display {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-text {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.feature-card h3,
+.feature-card p {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .footer-text {
+    color: #6d28d9;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+    background: var(--bg-glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-glass);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-glass-strong);
+    transform: scale(1.05);
+}
+
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+    transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+    fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+    fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+    stroke: var(--icon-fill);
+    stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+    stroke: var(--icon-fill-hover);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun {
+    transform: scale(1.75);
+}
+
+[data-theme="dark"] .sun-and-moon > .sun-beams {
+    opacity: 0;
+}
+
+[data-theme="dark"] .sun-and-moon > .moon > circle {
+    transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+    [data-theme="dark"] .sun-and-moon > .moon > circle {
+        cx: 17;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .sun-and-moon > .sun {
+        transition: transform .5s var(--ease-elastic-3);
+    }
+
+    .sun-and-moon > .sun-beams {
+        transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+    }
+
+    .sun-and-moon .moon > circle {
+        transition: transform .25s var(--ease-out-5);
+    }
+
+    @supports (cx: 1) {
+        .sun-and-moon .moon > circle {
+            transition: cx .25s var(--ease-out-5);
+        }
+    }
+
+    [data-theme="dark"] .sun-and-moon > .sun {
+        transition-timing-function: var(--ease-3);
+        transition-duration: .25s;
+        transform: scale(1.75);
+    }
+
+    [data-theme="dark"] .sun-and-moon > .sun-beams {
+        transition-duration: .15s;
+        transform: rotateZ(-25deg);
+    }
+
+    [data-theme="dark"] .sun-and-moon > .moon > circle {
+        transition-duration: .5s;
+        transition-delay: .25s;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="gradient-bg">
+        <!-- Animated Aura Lights -->
+        <div class="aura-light aura-1"></div>
+        <div class="aura-light aura-2"></div>
+        <div class="aura-light aura-3"></div>
+
+        <!-- Header -->
+        <nav class="relative z-10 px-6 py-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="logo-link flex items-center space-x-3" onclick="location.reload()">
+            <svg class="w-9 h-9 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42z"/>
+            </svg>
+            <span class="logo-text">TINYLINK</span>
+        </div>
+        
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                <mask class="moon" id="moon-mask">
+                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                    <circle cx="24" cy="10" r="6" fill="black" />
+                </mask>
+                <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                <g class="sun-beams" stroke="currentColor">
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="23" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                    <line x1="1" y1="12" x2="3" y2="12" />
+                    <line x1="21" y1="12" x2="23" y2="12" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </g>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+        <!-- Hero Section -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-32">
+            <div class="text-center mb-16 fade-in">
+                <h1 class="hero-title text-5xl md:text-7xl font-bold mb-6">
+                    Shorten URLs.<br/>Amplify Impact.
+                </h1>
+                <p class="hero-subtitle text-xl md:text-2xl mb-4">
+                    Transform long URLs into powerful short links
+                </p>
+                <p class="text-gray-400">Premium URL shortening for modern teams</p>
+            </div>
+
+            <!-- Main Shortener Card -->
+            <div class="glass-strong rounded-3xl p-8 md:p-12 pulse-glow fade-in">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-300 text-sm font-medium mb-3">Enter your long URL</label>
+                        <input 
+                            type="url" 
+                            id="urlInput"
+                            placeholder="https://example.com/very-long-url-that-needs-shortening"
+                            class="input-glass w-full px-6 py-4 rounded-2xl text-white placeholder-gray-500 text-lg"
+                        />
+                    </div>
+                    
+                    <button
+                        id="shortenBtn"
+                        class="w-full relative flex items-center justify-center px-6 py-4 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group"
+                    >
+                        <span
+                            class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4"
+                        >
+                            <span
+                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
+                            ></span>
+                        </span>
+                        <span
+                            class="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4"
+                        >
+                            <span
+                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
+                            ></span>
+                        </span>
+                        <span
+                            class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0"
+                        ></span>
+                        <span id="btnText"
+                            class="relative w-full text-center text-white transition-colors duration-200 ease-in-out group-hover:text-white text-lg font-semibold"
+                        >Shorten URL</span>
+                        <span id="btnLoading" class="loading hidden relative"></span>
+                    </button>
+                </div>
+
+                <!-- Result Card -->
+                <div id="resultCard" class="hidden mt-8 glass rounded-2xl p-6 fade-in">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-400 text-sm font-medium">Your shortened URL</span>
+                        <span class="text-green-400 text-sm flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            Success
+                        </span>
+                    </div>
+                    
+                    <div class="bg-black bg-opacity-30 rounded-xl p-4 mb-4">
+                        <p id="shortUrl" class="text-purple-300 text-lg font-mono break-all"></p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button 
+                            id="copyBtn"
+                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Copy Link</span>
+                        </button>
+                        <button 
+                            id="openBtn"
+                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                            <span>Open Link</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-3 gap-6 mt-16">
+                <div class="glass rounded-2xl p-6 feature-card">
+                    <div class="feature-card-content">
+                        <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Lightning Fast</h3>
+                        <p class="text-gray-400 text-sm">Instant URL shortening with our optimized infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 feature-card">
+                    <div class="feature-card-content">
+                        <div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Clean & Simple</h3>
+                        <p class="text-gray-400 text-sm">No clutter, no complexity. Just beautiful simplicity</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 feature-card">
+                    <div class="feature-card-content">
+                        <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Reliable Links</h3>
+                        <p class="text-gray-400 text-sm">99.9% uptime guarantee for all your shortened URLs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-divider"></div>
+            <p class="footer-text">Made by Subhayu & Sreyasi</p>
+        </footer>
+    </div>
+    
+    
+    <script>
+    // ===== API CONFIG (from House A) =====
+    const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
+
+    // ===== DOM ELEMENTS =====
+    const urlInput = document.getElementById('urlInput');
+    const shortenBtn = document.getElementById('shortenBtn');
+    const btnText = document.getElementById('btnText');
+    const btnLoading = document.getElementById('btnLoading');
+    const resultCard = document.getElementById('resultCard');
+    const shortUrl = document.getElementById('shortUrl');
+    const copyBtn = document.getElementById('copyBtn');
+    const openBtn = document.getElementById('openBtn');
+
+    let currentShortUrl = '';
+
+    // ===== URL VALIDATION (House A logic) =====
+    function isValidUrl(url) {
+        return /^https?:\/\//i.test(url);
+    }
+
+    // ===== MAIN SHORTEN FUNCTION (House A → House B) =====
+    async function shortenUrl() {
+        const longUrl = urlInput.value.trim();
+
+        if (!longUrl) {
+            alert('Please enter a URL');
+            return;
+        }
+
+        if (!isValidUrl(longUrl)) {
+            alert('Please enter a valid URL starting with http:// or https://');
+            return;
+        }
+
+        // UI loading state
+        btnText.classList.add('hidden');
+        btnLoading.classList.remove('hidden');
+        shortenBtn.disabled = true;
+        resultCard.classList.add('hidden');
+
+        try {
+            const response = await fetch(`${API_BASE}/shorten`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ longUrl })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok || !data.shortCode) {
+                throw new Error(data.error || 'Failed to shorten URL');
+            }
+
+            // Build final short URL (House A logic)
+            currentShortUrl = `${API_BASE}/${data.shortCode}`;
+            shortUrl.textContent = currentShortUrl;
+
+            resultCard.classList.remove('hidden');
+            resultCard.classList.add('fade-in');
+
+        } catch (err) {
+            alert(err.message || 'An error occurred');
+            console.error(err);
+
+        } finally {
+            // Reset UI
+            btnText.classList.remove('hidden');
+            btnLoading.classList.add('hidden');
+            shortenBtn.disabled = false;
+        }
+    }
+
+    // ===== EVENT HANDLERS =====
+    shortenBtn.addEventListener('click', shortenUrl);
+
+    urlInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') shortenUrl();
+    });
+
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(currentShortUrl);
+
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                </svg>
+                <span>Copied!</span>
+            `;
+
+            setTimeout(() => (copyBtn.innerHTML = originalText), 2000);
+
+        } catch {
+            alert('Failed to copy link');
+        }
+    });
+
+    openBtn.addEventListener('click', () => {
+        if (currentShortUrl) window.open(currentShortUrl, '_blank');
+    });
+    // Theme Toggle Functionality
+const storageKey = 'theme-preference';
+
+const onClick = () => {
+    theme.value = theme.value === 'light' ? 'dark' : 'light';
+    setPreference();
+};
+
+const getColorPreference = () => {
+    if (localStorage.getItem(storageKey))
+        return localStorage.getItem(storageKey);
+    else
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const setPreference = () => {
+    localStorage.setItem(storageKey, theme.value);
+    reflectPreference();
+};
+
+const reflectPreference = () => {
+    document.firstElementChild.setAttribute('data-theme', theme.value);
+    document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value);
+};
+
+const theme = {
+    value: getColorPreference(),
+};
+
+reflectPreference();
+
+window.onload = () => {
+    reflectPreference();
+    document.querySelector('#theme-toggle').addEventListener('click', onClick);
+};
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches:isDark}) => {
+    theme.value = isDark ? 'dark' : 'light';
+    setPreference();
+});
+    </script>
+
+</body>
+</html>
