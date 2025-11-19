@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="icon" type ="image/png" href="/assests/link.ico">
+    <link rel="icon" type="image/png" href="/assests/link.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TinyLink - Premium URL Shortener</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -65,18 +68,23 @@
         }
 
         @keyframes auraFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) scale(1);
                 opacity: 0.6;
             }
+
             25% {
                 transform: translate(100px, -100px) scale(1.2);
                 opacity: 0.8;
             }
+
             50% {
                 transform: translate(-50px, 100px) scale(0.9);
                 opacity: 0.5;
             }
+
             75% {
                 transform: translate(150px, 50px) scale(1.1);
                 opacity: 0.7;
@@ -102,9 +110,11 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
+
         /* Make Clear All button dark text in light mode */
         [data-theme="light"] .btn-secondary {
-            color: #3d454fce;  /* dark button text */
+            color: #3d454fce;
+            /* dark button text */
         }
 
         .btn-secondary:hover {
@@ -118,13 +128,16 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
+
         /* Fix input text color in light mode */
         [data-theme="light"] .input-glass {
-            color: #1f2937; /* dark text */
+            color: #1f2937;
+            /* dark text */
         }
 
         [data-theme="light"] .input-glass::placeholder {
-            color: #6b7280; /* softer dark placeholder */
+            color: #6b7280;
+            /* softer dark placeholder */
         }
 
 
@@ -144,6 +157,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -162,18 +176,21 @@
                 box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
             }
         } */
-         .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-}
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
 
-@keyframes pulseGlow {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
-    }
-    50% {
-        box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
-    }
-}
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+            }
+        }
 
         .loading {
             display: inline-block;
@@ -186,13 +203,15 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .neon-text {
             text-shadow: 0 0 10px rgba(102, 126, 234, 0.8),
-                         0 0 20px rgba(102, 126, 234, 0.6),
-                         0 0 30px rgba(102, 126, 234, 0.4);
+                0 0 20px rgba(102, 126, 234, 0.6),
+                0 0 30px rgba(102, 126, 234, 0.4);
         }
 
         .logo-link {
@@ -219,9 +238,12 @@
         }
 
         @keyframes logoGlow {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.6));
             }
+
             50% {
                 filter: drop-shadow(0 0 25px rgba(138, 43, 226, 0.9));
             }
@@ -238,44 +260,47 @@
             line-height: 1.1;
             filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.4));
         } */
-         .hero-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
-                 0 0 40px rgba(138, 43, 226, 0.4),
-                 0 0 60px rgba(138, 43, 226, 0.3);
-    animation: heroGlow 3s ease-in-out infinite;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
+                0 0 40px rgba(138, 43, 226, 0.4),
+                0 0 60px rgba(138, 43, 226, 0.3);
+            animation: heroGlow 3s ease-in-out infinite;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
 
-[data-theme="light"] .hero-title {
-    color: #7c3aed;
-    text-shadow: 0 0 15px rgba(124, 58, 237, 0.4),
-                 0 0 30px rgba(124, 58, 237, 0.3),
-                 0 0 45px rgba(124, 58, 237, 0.2);
-}
+        [data-theme="light"] .hero-title {
+            color: #7c3aed;
+            text-shadow: 0 0 15px rgba(124, 58, 237, 0.4),
+                0 0 30px rgba(124, 58, 237, 0.3),
+                0 0 45px rgba(124, 58, 237, 0.2);
+        }
 
-@keyframes heroGlow {
-    0%, 100% {
-        text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
-                     0 0 40px rgba(138, 43, 226, 0.4),
-                     0 0 60px rgba(138, 43, 226, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 30px rgba(138, 43, 226, 0.8),
-                     0 0 60px rgba(138, 43, 226, 0.6),
-                     0 0 90px rgba(138, 43, 226, 0.4);
-    }
-}
+        @keyframes heroGlow {
 
-[data-theme="light"] .hero-title {
-    animation: heroGlowLight 3s ease-in-out infinite;
-}
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(138, 43, 226, 0.6),
+                    0 0 40px rgba(138, 43, 226, 0.4),
+                    0 0 60px rgba(138, 43, 226, 0.3);
+            }
 
-/* @keyframes heroGlowLight {
+            50% {
+                text-shadow: 0 0 30px rgba(138, 43, 226, 0.8),
+                    0 0 60px rgba(138, 43, 226, 0.6),
+                    0 0 90px rgba(138, 43, 226, 0.4);
+            }
+        }
+
+        [data-theme="light"] .hero-title {
+            animation: heroGlowLight 3s ease-in-out infinite;
+        }
+
+        /* @keyframes heroGlowLight {
     0%, 100% {
         text-shadow: 0 0 15px rgba(124, 58, 237, 0.4),
                      0 0 30px rgba(124, 58, 237, 0.3),
@@ -287,17 +312,20 @@
                      0 0 72px rgba(124, 58, 237, 0.3);
     }
 } */
-/*Text Color Glowing - Manipulate it */
-@keyframes heroGlowLight {
-    0%, 100% {
-        text-shadow: 0 0 6px rgba(124, 58, 237, 0.25),
-                     0 0 12px rgba(124, 58, 237, 0.15);
-    }
-    50% {
-        text-shadow: 0 0 10px rgba(124, 58, 237, 0.3),
-                     0 0 20px rgba(124, 58, 237, 0.2);
-    }
-}
+        /*Text Color Glowing - Manipulate it */
+        @keyframes heroGlowLight {
+
+            0%,
+            100% {
+                text-shadow: 0 0 6px rgba(124, 58, 237, 0.25),
+                    0 0 12px rgba(124, 58, 237, 0.15);
+            }
+
+            50% {
+                text-shadow: 0 0 10px rgba(124, 58, 237, 0.3),
+                    0 0 20px rgba(124, 58, 237, 0.2);
+            }
+        }
 
         .hero-subtitle {
             font-family: 'Space Grotesk', sans-serif;
@@ -307,10 +335,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         [data-theme="light"] .hero-subtitle {
-        color: #9c69f4e7 !important;
-        -webkit-text-fill-color: #9c63ff !important;
-    }
+            color: #9c69f4e7 !important;
+            -webkit-text-fill-color: #9c63ff !important;
+        }
 
         .feature-card {
             position: relative;
@@ -359,9 +388,12 @@
         }
 
         @keyframes cardAura {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) scale(1);
             }
+
             50% {
                 transform: translate(20px, -20px) scale(1.2);
             }
@@ -392,10 +424,13 @@
         }
 
         @keyframes footerGlow {
-            0%, 100% {
+
+            0%,
+            100% {
                 filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
                 opacity: 0.9;
             }
+
             50% {
                 filter: drop-shadow(0 0 16px rgba(118, 75, 162, 0.8));
                 opacity: 1;
@@ -411,10 +446,13 @@
         }
 
         @keyframes dividerPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0.5;
                 transform: scaleX(1);
             }
+
             50% {
                 opacity: 1;
                 transform: scaleX(1.2);
@@ -426,454 +464,545 @@
                 width: 300px !important;
                 height: 300px !important;
             }
-            
+
             .logo-text {
                 font-size: 1.5rem;
             }
-            
+
             .hero-title {
                 font-size: 2.5rem !important;
             }
         }
+
         @import "https://unpkg.com/open-props/easings.min.css";
 
-:root {
-    --bg-primary: #000000;
-    --bg-glass: rgba(255, 255, 255, 0.05);
-    --bg-glass-strong: rgba(255, 255, 255, 0.08);
-    --bg-input: rgba(255, 255, 255, 0.06);
-    --text-primary: #ffffff;
-    --text-secondary: #d1d5db;
-    --text-tertiary: #9ca3af;
-    --border-glass: rgba(255, 255, 255, 0.1);
-    --icon-fill: #a78bfa;
-    --icon-fill-hover: #c4b5fd;
-}
-
-[data-theme="light"] {
-    --bg-primary: #f8f9fa;
-    --bg-glass: rgba(255, 255, 255, 0.9);
-    --bg-glass-strong: rgba(255, 255, 255, 0.95);
-    --bg-input: rgba(255, 255, 255, 0.8);
-    --text-primary: #1f2937;
-    --text-secondary: #4b5563;
-    --text-tertiary: #6b7280;
-    --border-glass: rgba(0, 0, 0, 0.1);
-    --icon-fill: #7c3aed;
-    --icon-fill-hover: #6d28d9;
-}
-
-/* Update existing classes to use CSS variables */
-.gradient-bg {
-    background: var(--bg-primary);
-    transition: background-color 0.3s ease;
-}
-
-[data-theme="light"] .aura-light {
-    opacity: 0.3;
-}
-
-.glass {
-    background: var(--bg-glass);
-    border: 1px solid var(--border-glass);
-    transition: all 0.3s ease;
-}
-
-[data-theme="light"] .glass {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.glass-strong {
-    background: var(--bg-glass-strong);
-    border: 1px solid var(--border-glass);
-}
-
-[data-theme="light"] .btn-secondary {
-    background: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] .btn-secondary:hover {
-    background: rgba(0, 0, 0, 0.08);
-}
-
-.input-glass {
-    background: var(--bg-input);
-    border: 1px solid var(--border-glass);
-    color: var(--text-primary);
-}
-
-.input-glass::placeholder {
-    color: var(--text-tertiary);
-}
-
-.text-muted {
-    color: var(--text-tertiary);
-    transition: color 0.3s ease;
-}
-
-[data-theme="light"] .text-muted {
-    color: #7c3aed;
-}
-
-.label-text {
-    color: var(--text-secondary);
-    transition: color 0.3s ease;
-}
-
-.result-label {
-    color: var(--text-tertiary);
-    transition: color 0.3s ease;
-}
-
-.short-url-display {
-    background: rgba(0, 0, 0, 0.3);
-    transition: background 0.3s ease;
-}
-
-[data-theme="light"] .short-url-display {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-.btn-text {
-    color: var(--text-primary);
-    transition: color 0.3s ease;
-}
-
-.feature-card h3,
-.feature-card p {
-    color: var(--text-primary);
-    transition: color 0.3s ease;
-}
-
-.feature-card p {
-    color: var(--text-secondary);
-}
-
-[data-theme="light"] .footer-text {
-    color: #6d28d9;
-}
-
-/*Dark Mode Button Style*/
-
-/* Theme Toggle Styles */
-.theme-toggle {
-    background: var(--bg-glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-glass);
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.theme-toggle:hover {
-    background: var(--bg-glass-strong);
-    transform: scale(1.05);
-}
-
-.sun-and-moon > :is(.moon, .sun, .sun-beams) {
-    transform-origin: center;
-}
-
-.sun-and-moon > :is(.moon, .sun) {
-    fill: var(--icon-fill);
-}
-
-.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
-    fill: var(--icon-fill-hover);
-}
-
-.sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill);
-    stroke-width: 2px;
-}
-
-.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
-    stroke: var(--icon-fill-hover);
-}
-
-[data-theme="dark"] .sun-and-moon > .sun {
-    transform: scale(1.75);
-}
-
-[data-theme="dark"] .sun-and-moon > .sun-beams {
-    opacity: 0;
-}
-
-[data-theme="dark"] .sun-and-moon > .moon > circle {
-    transform: translateX(-7px);
-}
-
-@supports (cx: 1) {
-    [data-theme="dark"] .sun-and-moon > .moon > circle {
-        cx: 17;
-        transform: translateX(0);
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .sun-and-moon > .sun {
-        transition: transform .5s var(--ease-elastic-3);
-    }
-
-    .sun-and-moon > .sun-beams {
-        transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
-    }
-
-    .sun-and-moon .moon > circle {
-        transition: transform .25s var(--ease-out-5);
-    }
-
-    @supports (cx: 1) {
-        .sun-and-moon .moon > circle {
-            transition: cx .25s var(--ease-out-5);
+        :root {
+            --bg-primary: #000000;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --bg-glass-strong: rgba(255, 255, 255, 0.08);
+            --bg-input: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-tertiary: #9ca3af;
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --icon-fill: #a78bfa;
+            --icon-fill-hover: #c4b5fd;
         }
-    }
 
-    [data-theme="dark"] .sun-and-moon > .sun {
-        transition-timing-function: var(--ease-3);
-        transition-duration: .25s;
-        transform: scale(1.75);
-    }
+        [data-theme="light"] {
+            --bg-primary: #f8f9fa;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --bg-glass-strong: rgba(255, 255, 255, 0.95);
+            --bg-input: rgba(255, 255, 255, 0.8);
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-tertiary: #6b7280;
+            --border-glass: rgba(0, 0, 0, 0.1);
+            --icon-fill: #7c3aed;
+            --icon-fill-hover: #6d28d9;
+        }
 
-    [data-theme="dark"] .sun-and-moon > .sun-beams {
-        transition-duration: .15s;
-        transform: rotateZ(-25deg);
-    }
+        /* Update existing classes to use CSS variables */
+        .gradient-bg {
+            background: var(--bg-primary);
+            transition: background-color 0.3s ease;
+        }
 
-    [data-theme="dark"] .sun-and-moon > .moon > circle {
-        transition-duration: .5s;
-        transition-delay: .25s;
-    }
-}
-                        /* History Section Styles */
-                .history-item {
-                    background: rgba(255, 255, 255, 0.03);
-                    backdrop-filter: blur(10px);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    border-radius: 16px;
-                    padding: 1rem;
-                    transition: all 0.3s ease;
+        [data-theme="light"] .aura-light {
+            opacity: 0.3;
+        }
+
+        .glass {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .glass {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-strong {
+            background: var(--bg-glass-strong);
+            border: 1px solid var(--border-glass);
+        }
+
+        [data-theme="light"] .btn-secondary {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .input-glass {
+            background: var(--bg-input);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+        }
+
+        .input-glass::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .text-muted {
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="light"] .text-muted {
+            color: #7c3aed;
+        }
+
+        .label-text {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .result-label {
+            color: var(--text-tertiary);
+            transition: color 0.3s ease;
+        }
+
+        .short-url-display {
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        [data-theme="light"] .short-url-display {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-text {
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .feature-card h3,
+        .feature-card p {
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .footer-text {
+            color: #6d28d9;
+        }
+
+        /*Dark Mode Button Style*/
+
+        /* Theme Toggle Styles */
+        .theme-toggle {
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glass);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-glass-strong);
+            transform: scale(1.05);
+        }
+
+        .sun-and-moon> :is(.moon, .sun, .sun-beams) {
+            transform-origin: center;
+        }
+
+        .sun-and-moon> :is(.moon, .sun) {
+            fill: var(--icon-fill);
+        }
+
+        .theme-toggle:is(:hover, :focus-visible)>.sun-and-moon> :is(.moon, .sun) {
+            fill: var(--icon-fill-hover);
+        }
+
+        .sun-and-moon>.sun-beams {
+            stroke: var(--icon-fill);
+            stroke-width: 2px;
+        }
+
+        .theme-toggle:is(:hover, :focus-visible) .sun-and-moon>.sun-beams {
+            stroke: var(--icon-fill-hover);
+        }
+
+        [data-theme="dark"] .sun-and-moon>.sun {
+            transform: scale(1.75);
+        }
+
+        [data-theme="dark"] .sun-and-moon>.sun-beams {
+            opacity: 0;
+        }
+
+        [data-theme="dark"] .sun-and-moon>.moon>circle {
+            transform: translateX(-7px);
+        }
+
+        @supports (cx: 1) {
+            [data-theme="dark"] .sun-and-moon>.moon>circle {
+                cx: 17;
+                transform: translateX(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .sun-and-moon>.sun {
+                transition: transform .5s var(--ease-elastic-3);
+            }
+
+            .sun-and-moon>.sun-beams {
+                transition: transform .5s var(--ease-elastic-4), opacity .5s var(--ease-3);
+            }
+
+            .sun-and-moon .moon>circle {
+                transition: transform .25s var(--ease-out-5);
+            }
+
+            @supports (cx: 1) {
+                .sun-and-moon .moon>circle {
+                    transition: cx .25s var(--ease-out-5);
                 }
+            }
 
-                .history-item:hover {
-                    background: rgba(255, 255, 255, 0.05);
-                    border-color: rgba(102, 126, 234, 0.3);
-                    transform: translateX(4px);
-                }
+            [data-theme="dark"] .sun-and-moon>.sun {
+                transition-timing-function: var(--ease-3);
+                transition-duration: .25s;
+                transform: scale(1.75);
+            }
 
-                [data-theme="light"] .history-item {
-                    background: rgba(0, 0, 0, 0.02);
-                    border: 1px solid rgba(0, 0, 0, 0.08);
-                }
+            [data-theme="dark"] .sun-and-moon>.sun-beams {
+                transition-duration: .15s;
+                transform: rotateZ(-25deg);
+            }
 
-                [data-theme="light"] .history-item:hover {
-                    background: rgba(0, 0, 0, 0.04);
-                    border-color: rgba(124, 58, 237, 0.3);
-                }
+            [data-theme="dark"] .sun-and-moon>.moon>circle {
+                transition-duration: .5s;
+                transition-delay: .25s;
+            }
+        }
 
-                .history-url {
-                    color: var(--text-secondary);
-                    font-size: 0.875rem;
-                    word-break: break-all;
-                    line-height: 1.4;
-                }
+        /* History Section Styles */
+        .history-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
 
-                .history-short-url {
-                    color: #a78bfa;
-                    font-size: 0.875rem;
-                    font-family: 'Monaco', 'Courier New', monospace;
-                    word-break: break-all;
-                }
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateX(4px);
+        }
 
-                [data-theme="light"] .history-short-url {
-                    color: #7c3aed;
-                }
+        [data-theme="light"] .history-item {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-                .delete-btn {
-                    background: rgba(239, 68, 68, 0.1);
-                    border: 1px solid rgba(239, 68, 68, 0.2);
-                    color: #ef4444;
-                    padding: 0.5rem;
-                    border-radius: 8px;
-                    transition: all 0.3s ease;
-                    flex-shrink: 0;
-                }
+        [data-theme="light"] .history-item:hover {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
 
-                .delete-btn:hover {
-                    background: rgba(239, 68, 68, 0.2);
-                    border-color: rgba(239, 68, 68, 0.4);
-                    transform: scale(1.05);
-                }
+        .history-url {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            word-break: break-all;
+            line-height: 1.4;
+        }
 
-                .history-empty {
-                    animation: fadeIn 0.5s ease-out;
-                }
-                /* Make the label black in light mode */
-                [data-theme="light"] label {
-                    color: #404752a8 !important;
-}
-    /* Light mode → make result box white */
-[data-theme="light"] .short-url-box {
-    background: #ffffff !important;
-}
+        .history-short-url {
+            color: #a78bfa;
+            font-size: 0.875rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+            word-break: break-all;
+        }
 
-/* Light mode → make short URL text black */
-[data-theme="light"] #shortUrl {
-    color: #000000 !important;
-}
-/* Light mode → make result box white + light grey border */
-[data-theme="light"] .short-url-box {
-    background: #d3d3d3e1 !important;
-    border: 1px solid #d1d5db !important;  /* soft grey border */
-}
+        [data-theme="light"] .history-short-url {
+            color: #7c3aed;
+        }
 
-/* Light mode → URL becomes black */
-[data-theme="light"] #shortUrl {
-    color: #000000 !important;
-}
-/* Experiment 1 */
-/* Full-screen loading overlay */
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
+        .delete-btn {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
 
-.loading-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+        .delete-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.4);
+            transform: scale(1.05);
+        }
 
-.loader {
-  width: 80px;
-  height: 50px;
-  position: relative;
-}
-.loader-text {
-  position: absolute;
-  top: 0;
-  padding: 0;
-  margin: 0;
-  color: #C8B6FF;
-  animation: text_713 3.5s ease both infinite;
-  font-size: .8rem;
-  letter-spacing: 1px;
-}
-.load {
-  background-color: #9A79FF;
-  border-radius: 50px;
-  display: block;
-  height: 16px;
-  width: 16px;
-  bottom: 0;
-  position: absolute;
-  transform: translateX(64px);
-  animation: loading_713 3.5s ease both infinite;
-}
-.load::before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: #D1C2FF;
-  border-radius: inherit;
-  animation: loading2_713 3.5s ease both infinite;
-}
-@keyframes text_713 {
-  0% {
-    letter-spacing: 1px;
-    transform: translateX(0px);
-  }
-  40% {
-    letter-spacing: 2px;
-    transform: translateX(26px);
-  }
-  80% {
-    letter-spacing: 1px;
-    transform: translateX(32px);
-  }
-  90% {
-    letter-spacing: 2px;
-    transform: translateX(0px);
-  }
-  100% {
-    letter-spacing: 1px;
-    transform: translateX(0px);
-  }
-}
-@keyframes loading_713 {
-  0% {
-    width: 16px;
-    transform: translateX(0px);
-  }
-  40% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  80% {
-    width: 16px;
-    transform: translateX(64px);
-  }
-  90% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  100% {
-    width: 16px;
-    transform: translateX(0px);
-  }
-}
-@keyframes loading2_713 {
-  0% {
-    transform: translateX(0px);
-    width: 16px;
-  }
-  40% {
-    transform: translateX(0%);
-    width: 80%;
-  }
-  80% {
-    width: 100%;
-    transform: translateX(0px);
-  }
-  90% {
-    width: 80%;
-    transform: translateX(15px);
-  }
-  100% {
-    transform: translateX(0px);
-    width: 16px;
-  }
-}
+        .history-empty {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Make the label black in light mode */
+        [data-theme="light"] label {
+            color: #404752a8 !important;
+        }
+
+        /* Light mode → make result box white */
+        [data-theme="light"] .short-url-box {
+            background: #ffffff !important;
+        }
+
+        /* Light mode → make short URL text black */
+        [data-theme="light"] #shortUrl {
+            color: #000000 !important;
+        }
+
+        /* Light mode → make result box white + light grey border */
+        [data-theme="light"] .short-url-box {
+            background: #d3d3d3e1 !important;
+            border: 1px solid #d1d5db !important;
+            /* soft grey border */
+        }
+
+        /* Light mode → URL becomes black */
+        [data-theme="light"] #shortUrl {
+            color: #000000 !important;
+        }
+
+        /* Experiment 1 */
+        /* Full-screen loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loader {
+            width: 80px;
+            height: 50px;
+            position: relative;
+        }
+
+        .loader-text {
+            position: absolute;
+            top: 0;
+            padding: 0;
+            margin: 0;
+            color: #C8B6FF;
+            animation: text_713 3.5s ease both infinite;
+            font-size: .8rem;
+            letter-spacing: 1px;
+        }
+
+        .load {
+            background-color: #9A79FF;
+            border-radius: 50px;
+            display: block;
+            height: 16px;
+            width: 16px;
+            bottom: 0;
+            position: absolute;
+            transform: translateX(64px);
+            animation: loading_713 3.5s ease both infinite;
+        }
+
+        .load::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: #D1C2FF;
+            border-radius: inherit;
+            animation: loading2_713 3.5s ease both infinite;
+        }
+
+        @keyframes text_713 {
+            0% {
+                letter-spacing: 1px;
+                transform: translateX(0px);
+            }
+
+            40% {
+                letter-spacing: 2px;
+                transform: translateX(26px);
+            }
+
+            80% {
+                letter-spacing: 1px;
+                transform: translateX(32px);
+            }
+
+            90% {
+                letter-spacing: 2px;
+                transform: translateX(0px);
+            }
+
+            100% {
+                letter-spacing: 1px;
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes loading_713 {
+            0% {
+                width: 16px;
+                transform: translateX(0px);
+            }
+
+            40% {
+                width: 100%;
+                transform: translateX(0px);
+            }
+
+            80% {
+                width: 16px;
+                transform: translateX(64px);
+            }
+
+            90% {
+                width: 100%;
+                transform: translateX(0px);
+            }
+
+            100% {
+                width: 16px;
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes loading2_713 {
+            0% {
+                transform: translateX(0px);
+                width: 16px;
+            }
+
+            40% {
+                transform: translateX(0%);
+                width: 80%;
+            }
+
+            80% {
+                width: 100%;
+                transform: translateX(0px);
+            }
+
+            90% {
+                width: 80%;
+                transform: translateX(15px);
+            }
+
+            100% {
+                transform: translateX(0px);
+                width: 16px;
+            }
+        }
+
+        /* Experimenting Invalid URL Box */
+        /* Error shake animation */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-10px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(10px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+            border-color: #ef4444 !important;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* History link styles */
+        .history-url,
+        .history-short-url {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .history-url:hover {
+            color: #a78bfa;
+        }
+
+        [data-theme="light"] .history-url:hover {
+            color: #7c3aed;
+        }
+
+        .history-short-url:hover {
+            color: #c4b5fd;
+        }
+
+        [data-theme="light"] .history-short-url:hover {
+            color: #6d28d9;
+        }
     </style>
 </head>
+
 <body>
     <!-- Experiment 2 -->
-     <!-- Loading Overlay -->
-<div id="loadingOverlay" class="loading-overlay">
-    <div class="loader">
-        <span class="loader-text">Loading</span>
-        <span class="load"></span>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loader">
+            <span class="loader-text">Loading</span>
+            <span class="load"></span>
+        </div>
     </div>
-</div>
     <div class="gradient-bg">
         <!-- Animated Aura Lights -->
         <div class="aura-light aura-1"></div>
@@ -882,42 +1011,44 @@
 
         <!-- Header -->
         <nav class="relative z-10 px-6 py-6">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="logo-link flex items-center space-x-3" onclick="location.reload()">
-            <svg class="w-9 h-9 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42z"/>
-            </svg>
-            <span class="logo-text">TINYLINK</span>
-        </div>
-        
-        <!-- Theme Toggle Button -->
-        <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                <mask class="moon" id="moon-mask">
-                    <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                    <circle cx="24" cy="10" r="6" fill="black" />
-                </mask>
-                <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
-                <g class="sun-beams" stroke="currentColor">
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </g>
-            </svg>
-        </button>
-    </div>
-</nav>
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="logo-link flex items-center space-x-3" onclick="location.reload()">
+                    <svg class="w-9 h-9 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24zm2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42z" />
+                    </svg>
+                    <span class="logo-text">TINYLINK</span>
+                </div>
+
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto"
+                    aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
+                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                            <circle cx="24" cy="10" r="6" fill="black" />
+                        </mask>
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+                        <g class="sun-beams" stroke="currentColor">
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </nav>
 
         <!-- Hero Section -->
         <div class="relative z-10 max-w-5xl mx-auto px-6 pt-20 pb-32">
             <div class="text-center mb-16 fade-in">
                 <h1 class="hero-title text-5xl md:text-6xl font-bold mb-6">
-                    Shorten URLs.<br/>Amplify Impact.
+                    Shorten URLs.<br />Amplify Impact.
                 </h1>
                 <p class="hero-subtitle text-xl md:text-2xl mb-4">
                     Transform long URLs into powerful short links
@@ -930,38 +1061,29 @@
                 <div class="space-y-6">
                     <div>
                         <label class="block text-gray-300 text-sm font-medium mb-3">Enter your long URL</label>
-                        <input 
-                            type="url" 
-                            id="urlInput"
+                        <input type="url" id="urlInput"
                             placeholder="https://example.com/very-long-url-that-needs-shortening"
-                            class="input-glass w-full px-6 py-4 rounded-2xl text-white placeholder-gray-500 text-lg"
-                        />
+                            class="input-glass w-full px-6 py-4 rounded-2xl text-white placeholder-gray-500 text-lg" />
+                        <p id="errorMessage" class="error-message">Please enter a valid URL</p>
                     </div>
-                    
-                    <button
-                        id="shortenBtn"
-                        class="w-full relative flex items-center justify-center px-6 py-4 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group"
-                    >
+
+                    <button id="shortenBtn"
+                        class="w-full relative flex items-center justify-center px-6 py-4 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group">
                         <span
-                            class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4"
-                        >
+                            class="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
                             <span
-                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
-                            ></span>
+                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
                         </span>
                         <span
-                            class="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4"
-                        >
+                            class="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4">
                             <span
-                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"
-                            ></span>
+                                class="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
                         </span>
                         <span
-                            class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0"
-                        ></span>
+                            class="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0"></span>
                         <span id="btnText"
-                            class="relative w-full text-center text-white transition-colors duration-200 ease-in-out group-hover:text-white text-lg font-semibold"
-                        >Shorten URL</span>
+                            class="relative w-full text-center text-white transition-colors duration-200 ease-in-out group-hover:text-white text-lg font-semibold">Shorten
+                            URL</span>
                         <span id="btnLoading" class="loading hidden relative"></span>
                     </button>
                 </div>
@@ -972,33 +1094,33 @@
                         <span class="text-gray-400 text-sm font-medium">Your shortened URL</span>
                         <span class="text-green-400 text-sm flex items-center">
                             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
                             </svg>
                             Success
                         </span>
                     </div>
-                    
+
                     <div class="bg-black bg-opacity-30 rounded-xl p-4 mb-4 short-url-box">
 
                         <p id="shortUrl" class="text-purple-300 text-lg font-mono break-all"></p>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <button 
-                            id="copyBtn"
-                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2"
-                        >
+                        <button id="copyBtn"
+                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                             </svg>
                             <span>Copy Link</span>
                         </button>
-                        <button 
-                            id="openBtn"
-                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2"
-                        >
+                        <button id="openBtn"
+                            class="btn-secondary flex-1 py-3 rounded-xl text-white font-medium flex items-center justify-center space-x-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                             <span>Open Link</span>
                         </button>
@@ -1010,9 +1132,11 @@
             <div class="grid md:grid-cols-3 gap-6 mt-16">
                 <div class="glass rounded-2xl p-6 feature-card">
                     <div class="feature-card-content">
-                        <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold text-lg mb-2">Lightning Fast</h3>
@@ -1022,9 +1146,11 @@
 
                 <div class="glass rounded-2xl p-6 feature-card">
                     <div class="feature-card-content">
-                        <div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                             <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold text-lg mb-2">Clean & Simple</h3>
@@ -1034,9 +1160,11 @@
 
                 <div class="glass rounded-2xl p-6 feature-card">
                     <div class="feature-card-content">
-                        <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-xl flex items-center justify-center mb-4">
                             <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold text-lg mb-2">Reliable Links</h3>
@@ -1045,40 +1173,44 @@
                 </div>
             </div>
         </div>
-         <!-- History Section -->
-            <div class="mt-16 fade-in">
-                <div class="max-w-3xl mx-auto">
-                    <div class="glass-strong rounded-3xl p-8 md:p-12 pulse-glow">
+        <!-- History Section -->
+        <div class="mt-16 fade-in">
+            <div class="max-w-3xl mx-auto">
+                <div class="glass-strong rounded-3xl p-8 md:p-12 pulse-glow">
 
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-2xl md:text-3xl font-bold text-white">History</h2>
-                        <button id="clearAllBtn" class="btn-secondary px-4 py-2 rounded-xl text-white font-medium flex items-center space-x-2 text-sm">
+                        <button id="clearAllBtn"
+                            class="btn-secondary px-4 py-2 rounded-xl text-white font-medium flex items-center space-x-2 text-sm">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                             <span>Clear All</span>
                         </button>
                     </div>
-                    
+
                     <div id="historyContainer" class="space-y-3">
                         <div class="text-center py-12 text-gray-400">
-                            <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <p>No history yet. Start shortening URLs!</p>
                         </div>
                     </div>
                 </div>
             </div>
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-divider"></div>
-            <p class="footer-text">Made by Subhayu & Sreyasi</p>
-        </footer>
-    </div>
-    
-    
-    <!-- <script>
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-divider"></div>
+                <p class="footer-text">Made by Subhayu & Sreyasi</p>
+            </footer>
+        </div>
+
+
+        <!-- <script>
     // ===== API CONFIG (from House A) =====
     const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
 
@@ -1383,199 +1515,210 @@ document.getElementById('clearAllBtn').addEventListener('click', clearAllHistory
 // Load history on page load
 window.addEventListener('DOMContentLoaded', renderHistory);
     </script> -->
-<script>
-    // ===== API CONFIG =====
-    const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
+        <script>
+            // ===== API CONFIG =====
+            const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
 
-    // ===== DOM ELEMENTS =====
-    const urlInput = document.getElementById('urlInput');
-    const shortenBtn = document.getElementById('shortenBtn');
-    const resultCard = document.getElementById('resultCard');
-    const shortUrl = document.getElementById('shortUrl');
-    const copyBtn = document.getElementById('copyBtn');
-    const openBtn = document.getElementById('openBtn');
+            // ===== DOM ELEMENTS =====
+            const urlInput = document.getElementById('urlInput');
+            const shortenBtn = document.getElementById('shortenBtn');
+            const resultCard = document.getElementById('resultCard');
+            const shortUrl = document.getElementById('shortUrl');
+            const copyBtn = document.getElementById('copyBtn');
+            const openBtn = document.getElementById('openBtn');
 
-    let currentShortUrl = '';
+            let currentShortUrl = '';
 
-    // ===== URL VALIDATION =====
-    function isValidUrl(url) {
-        return /^https?:\/\//i.test(url);
-    }
-
-    // ===== MAIN SHORTEN FUNCTION =====
-    async function shortenUrl() {
-        const longUrl = urlInput.value.trim();
-
-        if (!longUrl) {
-            alert('Please enter a URL');
-            return;
-        }
-
-        if (!isValidUrl(longUrl)) {
-            alert('Please enter a valid URL starting with http:// or https://');
-            return;
-        }
-
-        // Show loading overlay
-        document.getElementById('loadingOverlay').classList.add('active');
-        shortenBtn.disabled = true;
-        resultCard.classList.add('hidden');
-
-        try {
-            const response = await fetch(`${API_BASE}/shorten`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ longUrl })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok || !data.shortCode) {
-                throw new Error(data.error || 'Failed to shorten URL');
+            // ===== URL VALIDATION =====
+            function isValidUrl(url) {
+                return /^https?:\/\//i.test(url);
             }
 
-            currentShortUrl = `${window.location.origin}/${data.shortCode}`;
-            shortUrl.textContent = currentShortUrl;
-            
-            // Add to history
-            addToHistory(longUrl, currentShortUrl);
+            // ===== MAIN SHORTEN FUNCTION =====
+            async function shortenUrl() {
+                const longUrl = urlInput.value.trim();
+                const errorMessage = document.getElementById('errorMessage');
 
-            resultCard.classList.remove('hidden');
-            resultCard.classList.add('fade-in');
+                // Hide previous error
+                errorMessage.classList.remove('show');
+                urlInput.classList.remove('shake');
 
-        } catch (err) {
-            alert(err.message || 'An error occurred');
-            console.error(err);
+                if (!longUrl) {
+                    // Show error and shake
+                    urlInput.classList.add('shake');
+                    errorMessage.classList.add('show');
+                    setTimeout(() => urlInput.classList.remove('shake'), 500);
+                    return;
+                }
 
-        } finally {
-            // Hide loading overlay
-            document.getElementById('loadingOverlay').classList.remove('active');
-            shortenBtn.disabled = false;
-        }
-    }
+                if (!isValidUrl(longUrl)) {
+                    // Show error and shake
+                    urlInput.classList.add('shake');
+                    errorMessage.classList.add('show');
+                    setTimeout(() => urlInput.classList.remove('shake'), 500);
+                    return;
+                }
 
-    // ===== EVENT HANDLERS =====
-    shortenBtn.addEventListener('click', shortenUrl);
+                // Show loading overlay
+                document.getElementById('loadingOverlay').classList.add('active');
+                shortenBtn.disabled = true;
+                resultCard.classList.add('hidden');
 
-    urlInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') shortenUrl();
-    });
+                try {
+                    const response = await fetch(`${API_BASE}/shorten`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ longUrl })
+                    });
 
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(currentShortUrl);
+                    const data = await response.json();
 
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = `
+                    if (!response.ok || !data.shortCode) {
+                        throw new Error(data.error || 'Failed to shorten URL');
+                    }
+
+                    currentShortUrl = `${window.location.origin}/${data.shortCode}`;
+                    shortUrl.textContent = currentShortUrl;
+
+                    // Add to history
+                    addToHistory(longUrl, currentShortUrl);
+
+                    resultCard.classList.remove('hidden');
+                    resultCard.classList.add('fade-in');
+
+                } catch (err) {
+                    alert(err.message || 'An error occurred');
+                    console.error(err);
+
+                } finally {
+                    // Hide loading overlay
+                    document.getElementById('loadingOverlay').classList.remove('active');
+                    shortenBtn.disabled = false;
+                }
+            }
+
+            // ===== EVENT HANDLERS =====
+            shortenBtn.addEventListener('click', shortenUrl);
+
+            urlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') shortenUrl();
+            });
+
+            copyBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(currentShortUrl);
+
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = `
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
                 </svg>
                 <span>Copied!</span>
             `;
 
-            setTimeout(() => (copyBtn.innerHTML = originalText), 2000);
+                    setTimeout(() => (copyBtn.innerHTML = originalText), 2000);
 
-        } catch {
-            alert('Failed to copy link');
-        }
-    });
+                } catch {
+                    alert('Failed to copy link');
+                }
+            });
 
-    openBtn.addEventListener('click', () => {
-        if (currentShortUrl) window.open(currentShortUrl, '_blank');
-    });
+            openBtn.addEventListener('click', () => {
+                if (currentShortUrl) window.open(currentShortUrl, '_blank');
+            });
 
-    // ===== THEME TOGGLE =====
-    const storageKey = 'theme-preference';
+            // ===== THEME TOGGLE =====
+            const storageKey = 'theme-preference';
 
-    const onClick = () => {
-        theme.value = theme.value === 'light' ? 'dark' : 'light';
-        setPreference();
-    };
+            const onClick = () => {
+                theme.value = theme.value === 'light' ? 'dark' : 'light';
+                setPreference();
+            };
 
-    const getColorPreference = () => {
-        if (localStorage.getItem(storageKey))
-            return localStorage.getItem(storageKey);
-        else
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
+            const getColorPreference = () => {
+                if (localStorage.getItem(storageKey))
+                    return localStorage.getItem(storageKey);
+                else
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            };
 
-    const setPreference = () => {
-        localStorage.setItem(storageKey, theme.value);
-        reflectPreference();
-    };
+            const setPreference = () => {
+                localStorage.setItem(storageKey, theme.value);
+                reflectPreference();
+            };
 
-    const reflectPreference = () => {
-        document.firstElementChild.setAttribute('data-theme', theme.value);
-        document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value);
-    };
+            const reflectPreference = () => {
+                document.firstElementChild.setAttribute('data-theme', theme.value);
+                document.querySelector('#theme-toggle')?.setAttribute('aria-label', theme.value);
+            };
 
-    const theme = {
-        value: getColorPreference(),
-    };
+            const theme = {
+                value: getColorPreference(),
+            };
 
-    reflectPreference();
+            reflectPreference();
 
-    window.onload = () => {
-        reflectPreference();
-        document.querySelector('#theme-toggle').addEventListener('click', onClick);
-    };
+            window.onload = () => {
+                reflectPreference();
+                document.querySelector('#theme-toggle').addEventListener('click', onClick);
+            };
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches:isDark}) => {
-        theme.value = isDark ? 'dark' : 'light';
-        setPreference();
-    });
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches: isDark }) => {
+                theme.value = isDark ? 'dark' : 'light';
+                setPreference();
+            });
 
-    // ===== HISTORY MANAGEMENT =====
-    const STORAGE_KEY = 'tinylink_history';
+            // ===== HISTORY MANAGEMENT =====
+            const STORAGE_KEY = 'tinylink_history';
 
-    function loadHistory() {
-        const history = localStorage.getItem(STORAGE_KEY);
-        return history ? JSON.parse(history) : [];
-    }
+            function loadHistory() {
+                const history = localStorage.getItem(STORAGE_KEY);
+                return history ? JSON.parse(history) : [];
+            }
 
-    function saveHistory(history) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
-    }
+            function saveHistory(history) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+            }
 
-    function addToHistory(longUrl, shortUrl) {
-        const history = loadHistory();
-        
-        const exists = history.some(item => item.longUrl === longUrl);
-        if (exists) return;
-        
-        history.unshift({
-            id: Date.now(),
-            longUrl,
-            shortUrl,
-            timestamp: new Date().toISOString()
-        });
-        
-        if (history.length > 50) history.pop();
-        
-        saveHistory(history);
-        renderHistory();
-    }
+            function addToHistory(longUrl, shortUrl) {
+                const history = loadHistory();
 
-    function deleteFromHistory(id) {
-        const history = loadHistory();
-        const filtered = history.filter(item => item.id !== id);
-        saveHistory(filtered);
-        renderHistory();
-    }
+                const exists = history.some(item => item.longUrl === longUrl);
+                if (exists) return;
 
-    function clearAllHistory() {
-        if (confirm('Are you sure you want to clear all history?')) {
-            localStorage.removeItem(STORAGE_KEY);
-            renderHistory();
-        }
-    }
+                history.unshift({
+                    id: Date.now(),
+                    longUrl,
+                    shortUrl,
+                    timestamp: new Date().toISOString()
+                });
 
-    function renderHistory() {
-        const history = loadHistory();
-        const container = document.getElementById('historyContainer');
-        
-        if (history.length === 0) {
-            container.innerHTML = `
+                if (history.length > 50) history.pop();
+
+                saveHistory(history);
+                renderHistory();
+            }
+
+            function deleteFromHistory(id) {
+                const history = loadHistory();
+                const filtered = history.filter(item => item.id !== id);
+                saveHistory(filtered);
+                renderHistory();
+            }
+
+            function clearAllHistory() {
+                if (confirm('Are you sure you want to clear all history?')) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    renderHistory();
+                }
+            }
+
+            function renderHistory() {
+                const history = loadHistory();
+                const container = document.getElementById('historyContainer');
+
+                if (history.length === 0) {
+                    container.innerHTML = `
                 <div class="text-center py-12 text-gray-400 history-empty">
                     <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -1583,22 +1726,22 @@ window.addEventListener('DOMContentLoaded', renderHistory);
                     <p>No history yet. Start shortening URLs!</p>
                 </div>
             `;
-            return;
-        }
-        
-        container.innerHTML = history.map(item => `
-            <div class="history-item" data-id="${item.id}">
-                <div class="flex items-start gap-4">
-                    <div class="flex-1 min-w-0">
-                        <div class="mb-2">
-                            <span class="text-gray-400 text-xs font-medium">Original URL</span>
-                            <p class="history-url mt-1">${item.longUrl}</p>
-                        </div>
-                        <div>
-                            <span class="text-gray-400 text-xs font-medium">Short URL</span>
-                            <p class="history-short-url mt-1">${item.shortUrl}</p>
-                        </div>
-                    </div>
+                    return;
+                }
+
+                container.innerHTML = history.map(item => `
+        <div class="history-item" data-id="${item.id}">
+        <div class="flex items-start gap-4">
+            <div class="flex-1 min-w-0">
+                <div class="mb-2">
+                    <span class="text-gray-400 text-xs font-medium">Original URL</span>
+                    <a href="${item.longUrl}" target="_blank" class="history-url mt-1 block hover:underline">${item.longUrl}</a>
+                </div>
+                <div>
+                    <span class="text-gray-400 text-xs font-medium">Short URL</span>
+                    <a href="${item.shortUrl}" target="_blank" class="history-short-url mt-1 block hover:underline">${item.shortUrl}</a>
+                </div>
+            </div>
                     <button class="delete-btn" onclick="deleteFromHistory(${item.id})" title="Delete">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -1607,11 +1750,12 @@ window.addEventListener('DOMContentLoaded', renderHistory);
                 </div>
             </div>
         `).join('');
-    }
+            }
 
-    // ===== EVENT LISTENERS =====
-    document.getElementById('clearAllBtn').addEventListener('click', clearAllHistory);
-    window.addEventListener('DOMContentLoaded', renderHistory);
-</script>
+            // ===== EVENT LISTENERS =====
+            document.getElementById('clearAllBtn').addEventListener('click', clearAllHistory);
+            window.addEventListener('DOMContentLoaded', renderHistory);
+        </script>
 </body>
+
 </html>
