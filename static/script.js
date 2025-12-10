@@ -355,58 +355,45 @@ function rotatingTypeWriter() {
 
 window.addEventListener('load', rotatingTypeWriter);
 
-// ===== SOCIAL MEDIA SHARING =====
-function setupSocialSharing() {
-    const shareTooltips = document.querySelectorAll('[data-share]');
-    
-    shareTooltips.forEach(tooltip => {
-        tooltip.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const platform = tooltip.getAttribute('data-share');
-            const url = encodeURIComponent(currentShortUrl || window.location.href);
-            const text = encodeURIComponent('Check out this link!');
-            
-            let shareUrl = '';
-            
-            switch(platform) {
-                case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-                    break;
-                case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-                    break;
-                case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${text}%20${url}`;
-                    break;
-                case 'discord':
-                    // Discord doesn't have direct share URL, copy to clipboard instead
-                    navigator.clipboard.writeText(currentShortUrl);
-                    alert('Link copied! Paste it in Discord.');
-                    return;
-                case 'pinterest':
-                    shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${text}`;
-                    break;
-                case 'dribbble':
-                    // Dribbble doesn't have direct share URL, copy to clipboard instead
-                    navigator.clipboard.writeText(currentShortUrl);
-                    alert('Link copied! Share it on Dribbble.');
-                    return;
-                case 'github':
-                    // GitHub doesn't have direct share URL, copy to clipboard instead
-                    navigator.clipboard.writeText(currentShortUrl);
-                    alert('Link copied! Share it on GitHub.');
-                    return;
-                case 'reddit':
-                    shareUrl = `https://reddit.com/submit?url=${url}&title=${text}`;
-                    break;
+// ===== SHARE BUTTON =====
+const shareBtn = document.getElementById('shareBtn');
+
+if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+        const shareData = {
+            title: 'TinyLink - Shortened URL',
+            text: 'Check out this link!',
+            url: currentShortUrl || window.location.href
+        };
+
+        // Try to use Web Share API if available
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                // User cancelled or error occurred
+                if (err.name !== 'AbortError') {
+                    // Fallback to copy
+                    copyToClipboard(currentShortUrl);
+                }
             }
-            
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-            }
-        });
+        } else {
+            // Fallback: copy to clipboard
+            copyToClipboard(currentShortUrl);
+        }
     });
 }
 
-// Initialize social sharing when page loads
-window.addEventListener('load', setupSocialSharing);
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Show feedback
+        const originalContent = shareBtn.innerHTML;
+        shareBtn.innerHTML = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg><span>Copied!</span>';
+
+        setTimeout(() => {
+            shareBtn.innerHTML = originalContent;
+        }, 2000);
+    }).catch(() => {
+        alert('Failed to copy link');
+    });
+}
