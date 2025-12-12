@@ -1,6 +1,6 @@
 // ===== API CONFIG =====
-// const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
-const API_BASE = 'https://5pouad4fa7.execute-api.us-east-1.amazonaws.com/Prod';
+const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
+// const API_BASE = 'https://5pouad4fa7.execute-api.us-east-1.amazonaws.com/Prod';
 
 // ===== DOM ELEMENTS =====
 const urlInput = document.getElementById('urlInput');
