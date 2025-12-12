@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Redirecting...</title>
@@ -9,13 +10,16 @@
 
     if (code) {
       // Redirect to AWS redirect lambda
-      window.location.href = `https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod/${code}`;
+      //window.location.href = `https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod/${code}`;
+      window.location.href = `https://5pouad4fa7.execute-api.us-east-1.amazonaws.com/Prod/${code}`;
     } else {
       document.write("<h2>Invalid link</h2>");
     }
   </script>
 </head>
+
 <body>
   <h3>Redirecting...</h3>
 </body>
+
 </html>

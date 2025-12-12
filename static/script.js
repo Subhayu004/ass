@@ -1,6 +1,6 @@
 // ===== API CONFIG =====
-const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
-// const API_BASE = 'https://5pouad4fa7.execute-api.us-east-1.amazonaws.com/Prod';
+// const API_BASE = 'https://nel0n9hinl.execute-api.us-east-1.amazonaws.com/prod';
+const API_BASE = 'https://5pouad4fa7.execute-api.us-east-1.amazonaws.com/Prod';
 
 // ===== DOM ELEMENTS =====
 const urlInput = document.getElementById('urlInput');
@@ -356,45 +356,98 @@ function rotatingTypeWriter() {
 
 window.addEventListener('load', rotatingTypeWriter);
 
-// ===== SHARE BUTTON =====
+// ===== SHARE BUTTON MODAL =====
 const shareBtn = document.getElementById('shareBtn');
+const shareModal = document.getElementById('shareModal');
+const shareCloseBtn = document.getElementById('shareCloseBtn');
+const shareUrlInput = document.getElementById('shareUrlInput');
+const shareCopyBtn = document.getElementById('shareCopyBtn');
 
 if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-        const shareData = {
-            title: 'TinyLink - Shortened URL',
-            text: 'Check out this link!',
-            url: currentShortUrl || window.location.href
-        };
+    shareBtn.addEventListener('click', () => {
+        if (!currentShortUrl) {
+            alert('Please shorten a URL first!');
+            return;
+        }
 
-        // Try to use Web Share API if available
-        if (navigator.share) {
-            try {
-                await navigator.share(shareData);
-            } catch (err) {
-                // User cancelled or error occurred
-                if (err.name !== 'AbortError') {
-                    // Fallback to copy
-                    copyToClipboard(currentShortUrl);
-                }
-            }
-        } else {
-            // Fallback: copy to clipboard
-            copyToClipboard(currentShortUrl);
+        // Set the URL in the modal
+        shareUrlInput.value = currentShortUrl;
+
+        // Show the modal
+        shareModal.classList.add('active');
+    });
+}
+
+// Close modal handlers
+if (shareCloseBtn) {
+    shareCloseBtn.addEventListener('click', () => {
+        shareModal.classList.remove('active');
+    });
+}
+
+// Close modal when clicking outside
+shareModal?.addEventListener('click', (e) => {
+    if (e.target === shareModal) {
+        shareModal.classList.remove('active');
+    }
+});
+
+// Copy button in modal
+if (shareCopyBtn) {
+    shareCopyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(shareUrlInput.value);
+            const originalText = shareCopyBtn.textContent;
+            shareCopyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                shareCopyBtn.textContent = originalText;
+            }, 2000);
+        } catch (err) {
+            alert('Failed to copy link');
         }
     });
 }
 
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        // Show feedback
-        const originalContent = shareBtn.innerHTML;
-        shareBtn.innerHTML = '<svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg><span>Copied!</span>';
+// Social media sharing
+const shareIconBtns = document.querySelectorAll('.share-icon-btn');
+shareIconBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const platform = btn.getAttribute('data-platform');
+        const url = encodeURIComponent(currentShortUrl || window.location.href);
+        const title = encodeURIComponent('Check out this link from TinyLink!');
+        const text = encodeURIComponent('Check out this shortened URL');
 
-        setTimeout(() => {
-            shareBtn.innerHTML = originalContent;
-        }, 2000);
-    }).catch(() => {
-        alert('Failed to copy link');
+        let shareUrl = '';
+
+        switch (platform) {
+            case 'whatsapp':
+                shareUrl = `https://wa.me/?text=${text}%20${url}`;
+                break;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                break;
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+                break;
+            case 'email':
+                shareUrl = `mailto:?subject=${title}&body=${text}%20${url}`;
+                break;
+            case 'reddit':
+                shareUrl = `https://reddit.com/submit?url=${url}&title=${title}`;
+                break;
+            case 'telegram':
+                shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+                break;
+            case 'linkedin':
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                break;
+            case 'pinterest':
+                shareUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${text}`;
+                break;
+        }
+
+        if (shareUrl) {
+            window.open(shareUrl, '_blank', 'width=600,height=400');
+        }
     });
-}
+});
